@@ -1,0 +1,17 @@
+{
+    "name": "juniper-from-schema-dev",
+    "build": {
+        "dockerfile": "../Dockerfile",
+        "target": "dev"
+    },
+    "settings": {
+        "docker.showExplorer": false,
+    },
+    "extensions": [
+        "swellaby.rust-pack",
+        "eamodio.gitlens",
+        "joshbolduc.commitlint",
+        "ms-azuretools.vscode-docker",
+    ],
+    "onCreateCommand": "bash .devcontainer/on-create.sh",
+}
