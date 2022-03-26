@@ -20,6 +20,7 @@ pub struct CodeGenPass<'doc> {
     context_type: &'doc syn::Type,
     errors: BTreeSet<Error>,
     ast_data: AstData<'doc>,
+    #[allow(dead_code)]
     raw_schema: &'doc str,
     scalars: Vec<Scalar<'doc>>,
     objects: Vec<Object<'doc>>,
@@ -2135,6 +2136,8 @@ impl<'doc> ToTokens for Union<'doc> {
 
 #[derive(Debug)]
 struct UnionVariant {
+    // TODO: check if this field can be removed instead of allowing dead code
+    #[allow(dead_code)]
     graphql_name: Ident,
     rust_name: Ident,
     type_inside: Box<Type>,
