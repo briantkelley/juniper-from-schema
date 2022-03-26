@@ -1,5 +1,5 @@
 error: proc macro panicked
-  --> $DIR/docs_on_special_case_scalars.rs:6:1
+  --> tests/compile_fail/docs_on_special_case_scalars.rs:6:1
    |
 6  | / juniper_from_schema::graphql_schema! {
 7  | |     schema {
@@ -13,10 +13,10 @@ error: proc macro panicked
    = help: message:
 
            error: Special case scalars don't support having descriptions because the Rust types are defined in external crates
-            --> schema:2:62
+            --> schema:2:61
              |
-           2 |    { foo : String ! @ juniper(ownership : "owned") } "Url docs" scalar Url
-             |                                                                 ^
+           2 |    { foo : String! @ juniper(ownership : "owned") } "Url docs" scalar Url
+             |                                                                ^
 
            error: Special case scalars don't support having descriptions because the Rust types are defined in external crates
             --> schema:3:20
@@ -39,7 +39,7 @@ error: proc macro panicked
            aborting due to 4 errors
 
 error[E0405]: cannot find trait `QueryFields` in this scope
-  --> $DIR/docs_on_special_case_scalars.rs:30:6
+  --> tests/compile_fail/docs_on_special_case_scalars.rs:30:6
    |
 30 | impl QueryFields for Query {
    |      ^^^^^^^^^^^ not found in this scope

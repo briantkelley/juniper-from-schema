@@ -1,5 +1,5 @@
 error: proc macro panicked
-  --> $DIR/uppercase_uuid.rs:6:1
+  --> tests/compile_fail/uppercase_uuid.rs:6:1
    |
 6  | / juniper_from_schema::graphql_schema! {
 7  | |     schema {
@@ -13,17 +13,17 @@ error: proc macro panicked
    = help: message:
 
            error: The UUID must be named `Uuid`
-            --> schema:2:50
+            --> schema:2:49
              |
-           2 |    { uuid : UUID ! @ juniper(ownership : "owned") } scalar UUID
-             |                                                     ^
+           2 |    { uuid : UUID! @ juniper(ownership : "owned") } scalar UUID
+             |                                                    ^
 
            This is to be consistent with the naming the "uuid" crate
 
            aborting due to previous error
 
 error[E0405]: cannot find trait `QueryFields` in this scope
-  --> $DIR/uppercase_uuid.rs:20:6
+  --> tests/compile_fail/uppercase_uuid.rs:20:6
    |
 20 | impl QueryFields for Query {
    |      ^^^^^^^^^^^ not found in this scope
