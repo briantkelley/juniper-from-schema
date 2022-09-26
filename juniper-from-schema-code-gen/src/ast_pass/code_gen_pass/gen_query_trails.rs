@@ -837,7 +837,7 @@ mod test {
         let ast_data = AstData::new_from_doc(&doc).unwrap();
         let context_type = crate::default_error_type();
         let error_type = crate::default_context_type();
-        let mut out = CodeGenPass::new(schema, &context_type, &error_type, ast_data);
+        let mut out = CodeGenPass::new(&context_type, &error_type, ast_data);
 
         out.gen_query_trails(&doc);
 

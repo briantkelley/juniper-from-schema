@@ -20,7 +20,6 @@ pub struct CodeGenPass<'doc> {
     context_type: &'doc syn::Type,
     errors: BTreeSet<Error>,
     ast_data: AstData<'doc>,
-    raw_schema: &'doc str,
     scalars: Vec<Scalar<'doc>>,
     objects: Vec<Object<'doc>>,
     subscription: Option<Subscription<'doc>>,
@@ -33,7 +32,6 @@ pub struct CodeGenPass<'doc> {
 
 impl<'doc> CodeGenPass<'doc> {
     pub fn new(
-        raw_schema: &'doc str,
         error_type: &'doc syn::Type,
         context_type: &'doc syn::Type,
         ast_data: AstData<'doc>,
@@ -43,7 +41,6 @@ impl<'doc> CodeGenPass<'doc> {
             context_type,
             ast_data,
             errors: BTreeSet::new(),
-            raw_schema,
             scalars: Vec::new(),
             objects: Vec::new(),
             subscription: None,
@@ -81,7 +78,6 @@ impl<'doc> CodeGenPass<'doc> {
             context_type: _,
             errors: _,
             ast_data: _,
-            raw_schema: _,
         } = self;
 
         let mut tokens = quote! {
@@ -347,7 +343,6 @@ impl<'doc> SchemaVisitor<'doc> for CodeGenPass<'doc> {
                     .remove_one_layer_of_nullability_by_value();
                 let ident = format_ident!("{}", variant_name);
                 UnionVariant {
-                    graphql_name: ident.clone(),
                     rust_name: ident,
                     type_inside,
                 }
@@ -2135,7 +2130,6 @@ impl<'doc> ToTokens for Union<'doc> {
 
 #[derive(Debug)]
 struct UnionVariant {
-    graphql_name: Ident,
     rust_name: Ident,
     type_inside: Box<Type>,
 }
@@ -2143,7 +2137,6 @@ struct UnionVariant {
 impl ToTokens for UnionVariant {
     fn to_tokens(&self, tokens: &mut TokenStream) {
         let UnionVariant {
-            graphql_name: _,
             rust_name,
             type_inside,
         } = self;
