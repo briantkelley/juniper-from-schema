@@ -83,26 +83,26 @@ error: proc macro panicked
            Got `[String]`
 
            error: Invalid default value for `async` argument. Must be `false`
-            --> schema:3:27
+            --> schema:3:19
              |
-           3 |            [String] = false, async : Boolean = true, stream_type : String = null,
-             |                              ^
+           3 |    [String] = false, async : Boolean = true, stream_type : String = null,
+             |                      ^
 
            Got `true`
 
            error: Invalid default value for `stream_item_infallible` argument. Must be `true`
-            --> schema:4:9
+            --> schema:4:1
              |
-           4 |            stream_item_infallible : Boolean = false, bar : [Boolean]) on FIELD
-             |            ^
+           4 |    stream_item_infallible : Boolean = false, bar : [Boolean]) on FIELD
+             |    ^
 
            Got `false`
 
            error: Invalid argument for @juniper directive: `bar`
-            --> schema:4:51
+            --> schema:4:43
              |
-           4 |            stream_item_infallible : Boolean = false, bar : [Boolean]) on FIELD
-             |                                                      ^
+           4 |    stream_item_infallible : Boolean = false, bar : [Boolean]) on FIELD
+             |                                              ^
 
            Supported arguments are `ownership`, `infallible`, `with_time_zone`, `async`, `stream_item_infallible`, and `stream_type`
 
