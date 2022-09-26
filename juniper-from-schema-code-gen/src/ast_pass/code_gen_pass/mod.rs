@@ -1805,11 +1805,7 @@ impl<'a, 'doc> ToTokens for FieldToTokensForSubscriptionImpl<'a, 'doc> {
             Some(quote! { ? })
         };
 
-        let mut return_result = if self.field.directives.stream_type.is_some() {
-            quote! { resolved_value }
-        } else {
-            quote! { std::boxed::Box::pin(resolved_value) }
-        };
+        let mut return_result = quote! { resolved_value };
 
         if !self.field.directives.infallible.value {
             return_result = quote! { Ok(#return_result) };

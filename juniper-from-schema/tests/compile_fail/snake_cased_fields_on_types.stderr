@@ -1,5 +1,5 @@
 error: proc macro panicked
-  --> $DIR/snake_cased_fields_on_types.rs:4:1
+  --> tests/compile_fail/snake_cased_fields_on_types.rs:4:1
    |
 4  | / juniper_from_schema::graphql_schema! {
 5  | |     type Query {
@@ -15,7 +15,7 @@ error: proc macro panicked
            error: Field names must be camelCase, not snake_case
             --> schema:1:14
              |
-           1 |    type Query { snake_cased : String ! } schema { query : Query }
+           1 |    type Query { snake_cased : String! } schema { query : Query }
              |                 ^
 
            This is because Juniper always converts all field names to camelCase
@@ -23,7 +23,7 @@ error: proc macro panicked
            aborting due to previous error
 
 error[E0405]: cannot find trait `QueryFields` in this scope
-  --> $DIR/snake_cased_fields_on_types.rs:14:6
+  --> tests/compile_fail/snake_cased_fields_on_types.rs:14:6
    |
 14 | impl QueryFields for Query {
    |      ^^^^^^^^^^^ not found in this scope

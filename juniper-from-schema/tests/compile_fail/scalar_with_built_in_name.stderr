@@ -1,5 +1,5 @@
 error: proc macro panicked
-  --> $DIR/scalar_with_built_in_name.rs:4:1
+  --> tests/compile_fail/scalar_with_built_in_name.rs:4:1
    |
 4  | / juniper_from_schema::graphql_schema! {
 5  | |     schema {
@@ -13,15 +13,15 @@ error: proc macro panicked
    = help: message:
 
            error: You cannot declare scalars with names matching a built-in
-            --> schema:3:1
+            --> schema:2:73
              |
-           3 |    scalar String
-             |    ^
+           2 |    { helloWorld(name : String!) : String! @ juniper(ownership : "owned") } scalar
+             |                                                                            ^
 
            aborting due to previous error
 
 error[E0405]: cannot find trait `QueryFields` in this scope
-  --> $DIR/scalar_with_built_in_name.rs:20:6
+  --> tests/compile_fail/scalar_with_built_in_name.rs:20:6
    |
 20 | impl QueryFields for Query {
    |      ^^^^^^^^^^^ not found in this scope
